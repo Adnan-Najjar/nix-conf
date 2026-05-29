@@ -1,0 +1,55 @@
+# Completion cache path setup
+typeset -g compfile="$HOME/.cache/.zcompdump"
+
+if [[ -d "$comppath" ]]; then
+      [[ -w "$compfile" ]] || rm -rf "$compfile" >/dev/null 2>&1
+fi
+
+WORDCHARS=${WORDCHARS//\/} # Don't consider '/' character part of the word
+
+# Configure key keybindings
+bindkey ' ' magic-space                           # do history expansion on space
+bindkey -e                                        # emacs key bindings
+bindkey '^[[1;5C' forward-word                    # ctrl + ->
+bindkey '^[[1;5D' backward-word                   # ctrl + <-
+
+bindkey -s '^Xgc' 'git commit -m ""\C-b'
+bindkey -s '^Xga' 'git commit --amend\n'
+bindkey -s '^Xgs' 'git status\n'
+bindkey -s '^Xgl' 'git pl -n 10\n'
+
+# Open command in editor
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
+# :help terminal-osc133
+precmd() {
+    print -Pn "\e]2;%~\a" # Sets the terminal title
+    print -Pn "\ek%1~\e\\" # Sets the tmux window name to the last folder
+    printf "\033]133;A\007" # shell Integration
+}
+
+chpwd() {
+    eza --icons=auto
+}
+
+# SILENCE!
+alias -g N='2>/dev/null'
+# Run silently in the bg
+alias -g B='&>/dev/null &'
+
+# Override -h and --help with bat
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+
+# Auto-attach to TMUX on startup
+if [[ -z "$TMUX" && -n "$PS1" && "$SHLVL" -eq 1 ]]; then
+  echo -e -n "\e[32mTmux?\e[0m \e[33m(Y/n)\e[0m "
+  read -k 1 choice; echo ""
+  if ! [[ "$choice" =~ ^[Nn]$ ]]; then
+    tmux attach-session -t main 2>/dev/null || tmux new-session -s main
+  fi
+fi
+
+fastfetch -c examples/9.jsonc
