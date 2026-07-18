@@ -31,10 +31,12 @@
     texliveSmall
     android-tools
     nerd-fonts.jetbrains-mono # font
+    w3m
 
     # GUI
     mission-center
     chromium
+    thunderbird
     gradia
     marktext
     libreoffice

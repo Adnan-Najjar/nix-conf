@@ -111,7 +111,7 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       always-show-log-out = true;
       enabled-extensions = [
-        # "copyous@boerdereinar.dev"
+        "clipboard-indicator@tudmotu.com"
         "caffeine@patapon.info"
         "gsconnect@andyholmes.github.io"
         "athan@goodm4ven"
@@ -122,6 +122,7 @@ with lib.hm.gvariant;
         "foot.desktop"
         "firefox.desktop"
         "org.gnome.Nautilus.desktop"
+        "thunderbird.desktop"
         "whatsapp.desktop"
       ];
     };
@@ -156,28 +157,6 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/search-providers" = {
       disable-external = false;
-    };
-
-    "org/gnome/shell/extensions/copyous" = {
-      open-clipboard-dialog-shortcut = [ "<Super>v" ];
-      auto-hide-search = true;
-      clipboard-orientation = "vertical";
-      clipboard-position-horizontal = "top";
-      clipboard-position-vertical = "fill";
-      dynamic-item-height = true;
-      header-controls-visibility = "visible-on-hover";
-      item-height = 100;
-      item-width = 300;
-      show-at-pointer = true;
-      show-header = false;
-    };
-
-    "org/gnome/shell/extensions/copyous/file-item" = {
-      file-preview-visibility = "file-info";
-    };
-
-    "org/gnome/shell/extensions/copyous/link-item" = {
-      link-preview-orientation = "horizontal";
     };
 
     "org/gnome/shell/extensions/athan" = {

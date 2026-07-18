@@ -36,13 +36,17 @@ in
       package = pkgs.papirus-icon-theme;
     };
   };
+  # Fix dark mode
+  systemd.user.sessionVariables = {
+    GTK_THEME = "Adwaita:dark";
+  };
 
   home = {
     packages = with pkgs.gnomeExtensions; [
       caffeine
       athantimes
       todotxt
-      copyous
+      clipboard-indicator
     ];
 
   };
