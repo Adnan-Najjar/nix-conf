@@ -1,10 +1,10 @@
 # Nix Home-Manager Configuration
 
-The `setup.sh` is setup script for ubuntu server miminal, it installs:
-1. GNOME + GSconnect
-2. Virt-Manager
-3. Docker
-4. Fail2Ban
-5. Nix
+The `setup.sh` is setup script for Fedora Workstation, it installs:
+- GSconnect
+- Virt-Manager
+- Docker
+- SSH + Fail2Ban
+- Nix
 
-Then installs the nix config and applies it.
+Then installs my nix config and applies it.

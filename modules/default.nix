@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./discord
+    # ./discord
     ./foot
     ./git
     ./gnome
