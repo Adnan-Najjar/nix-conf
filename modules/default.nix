@@ -10,6 +10,8 @@
     ./tmux
     ./firefox
     ./zsh
+
+    ./registry
     ./packages.nix
     ./services.nix
   ];

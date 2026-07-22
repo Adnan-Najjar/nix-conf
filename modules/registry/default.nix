@@ -8,7 +8,7 @@
       };
       to = {
         type = "path";
-        path = ./nixec;
+        path = toString ./nixec;
       };
     };
     python3-uv = {
@@ -18,7 +18,7 @@
       };
       to = {
         type = "path";
-        path = ./python3-uv;
+        path = toString ./python3-uv;
       };
     };
   };
